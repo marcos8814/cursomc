@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 
 
@@ -26,7 +28,7 @@ public class Produto implements Serializable{
 	private String nome;
 	private Double preco;
 	
-	
+	@JsonBackReference
 	//relacionamento das tabelas *muitos para muitos
 	@ManyToMany
 	@JoinTable(name="PRODUTO_CATEGORIA",
