@@ -3,7 +3,7 @@ package com.atomsistemas.cursomc.domain.enuns;
 public enum TipoCliente {
 	
 	PESSOAFISICA(1,"Pessoa Fisica"),
-	PESSOAJURIDICA(2,	"Pessoa Juridica");
+	PESSOAJURIDICA(2,"Pessoa Juridica");
 	
 	private int cod;
 	private String descrição;

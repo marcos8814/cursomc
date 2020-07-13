@@ -21,9 +21,9 @@ public class Categoria implements Serializable{
 	private Integer Id;
     private String nome;
     
-    @JsonManagedReference
+   @JsonManagedReference//usado para end poit no Api Rest
   //relacionamento das tabelas *muitos para muitos
-    @ManyToMany(mappedBy = "categorias")
+    @ManyToMany(mappedBy ="categorias")
     
   //Associação * produtos
     private List<Produto> produtos = new ArrayList<>();

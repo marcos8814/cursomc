@@ -7,7 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+
 import javax.persistence.ManyToOne;
+
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
+
 
 
 @Entity
@@ -23,12 +30,17 @@ public class Endereco implements Serializable{
 	private String bairro;
 	private String cep;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")//Associações muitos para um;
 	private Cliente cliente;//nome 	que esta no diagrama de dominio.
+	
+  
 	@ManyToOne
-	@JoinColumn(name = "cidade")//Associações muitos para um;
+	@JoinColumn(name = "cidade_id")//Associações muitos para um;
 	private Cidade cidade;//nome 	que esta no diagrama de dominio.
+    
+	
 	//Obs só endereço conhece a cidade.
 	public Endereco () {
 			
@@ -45,6 +57,7 @@ public class Endereco implements Serializable{
 		this.cep = cep;
 		this.cliente = cliente;
 		this.cidade = cidade;
+		
 	}
 
 	public Integer getId() {
@@ -111,6 +124,7 @@ public class Endereco implements Serializable{
 		this.cidade = cidade;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -135,6 +149,8 @@ public class Endereco implements Serializable{
 			return false;
 		return true;
 	}
+
+	
 	
 	
 }

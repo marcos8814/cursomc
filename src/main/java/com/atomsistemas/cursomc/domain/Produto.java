@@ -18,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 
+
+
 @Entity
 public class Produto implements Serializable{
 	private static final long serialVersionUID = 1L; 
@@ -33,7 +35,7 @@ public class Produto implements Serializable{
 	@ManyToMany
 	@JoinTable(name="PRODUTO_CATEGORIA",
 	joinColumns = @JoinColumn(name="produto_id"),
-	inverseJoinColumns = @JoinColumn(name= "categoria_id")
+	inverseJoinColumns = @JoinColumn(name="categoria_id")
 	)
 	
 	//Associações de tabela 1 Categoria

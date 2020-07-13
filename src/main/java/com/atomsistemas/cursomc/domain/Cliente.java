@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
 
 import com.atomsistemas.cursomc.domain.enuns.TipoCliente;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+
 @Entity
 public class Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -28,12 +31,13 @@ public class Cliente implements Serializable{
 	private String cpfOuCnpj;
 	private Integer tipo;//Tipoclinete trocar por integer(Enumeração)
 	
-	@OneToMany(mappedBy = "cliente")//Associação um para muito
+	@JsonManagedReference//serialização end point
+	@OneToMany(mappedBy ="cliente")//Associação um para muito
 	private List<Endereco> enderecos = new ArrayList<>();//Coleção
 	
 	@ElementCollection
-	@CollectionTable(name = "TELEFONE")//ASSOCIAÇÃO PARA TELEFONE
-	private Set<String > telefones = new HashSet<>();//Coleção ,Classe fraca 
+	@CollectionTable(name ="TELEFONE")//ASSOCIAÇÃO PARA TELEFONE
+	private Set<String> telefones = new HashSet<>();//Coleção ,Classe fraca 
 	
 	public Cliente() {
 		
