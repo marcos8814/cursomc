@@ -15,8 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.atomsistemas.cursomc.domain.enuns.TipoCliente;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -31,7 +30,7 @@ public class Cliente implements Serializable{
 	private String cpfOuCnpj;
 	private Integer tipo;//Tipoclinete trocar por integer(Enumeração)
 	
-	@JsonManagedReference//serialização end point
+     //serialização end point
 	@OneToMany(mappedBy ="cliente")//Associação um para muito
 	private List<Endereco> enderecos = new ArrayList<>();//Coleção
 	
@@ -39,6 +38,7 @@ public class Cliente implements Serializable{
 	@CollectionTable(name ="TELEFONE")//ASSOCIAÇÃO PARA TELEFONE
 	private Set<String> telefones = new HashSet<>();//Coleção ,Classe fraca 
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
 	
