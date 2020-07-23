@@ -3,8 +3,12 @@ package com.atomsistemas.cursomc.services;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.atomsistemas.cursomc.domain.Categoria;
@@ -49,4 +53,9 @@ public void delete(Integer id) {
 	 return repo.findAll();
 	 
  }
+//Paginação com parametro de requisição
+ public Page<Categoria> findPage(Integer page, Integer linesPerPage, String ordemBy, String direction){
+ PageRequest pageRequest = PageRequest.of (page,linesPerPage, Direction.valueOf(direction), ordemBy);
+ return repo.findAll(pageRequest);
 }
+ }
