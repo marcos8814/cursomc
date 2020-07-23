@@ -1,5 +1,6 @@
 package com.atomsistemas.cursomc.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,4 +44,9 @@ public void delete(Integer id) {
 		throw new DateIntegrityException("Não possivel excluir uma categoria que tem produtos");
 	}
   }
+//CRUD DTO lista de categorias Api Json
+ public List<Categoria> findAll(){
+	 return repo.findAll();
+	 
+ }
 }
